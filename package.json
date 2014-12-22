@@ -1,0 +1,23 @@
+{
+  "name": "node-pywws",
+  "version": "0.0.1",
+  "description": "A node application for serving PyWWS data",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require test/support/env --reporter spec --bail --check-leaks test/"
+  },
+  "keywords": [
+    "pywws"
+  ],
+  "author": "Nicklas Nygren",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^2.0.1",
+    "should": "^4.4.1",
+    "supertest": "^0.15.0"
+  },
+  "dependencies": {
+    "bluebird": "^2.4.2",
+    "express": "^4.10.6"
+  }
+}
