@@ -53,6 +53,18 @@ describe('API:', function () {
           expect(200, assert.singleItemResponse(done));
       });
 
+      it(method + ' should get first single data point', function (done) {
+        request(app).
+          get('/' + method + '/first').
+          expect(200, assert.singleItemResponse(done));
+      });
+
+      it(method + ' should get latest single data point', function (done) {
+        request(app).
+          get('/' + method + '/latest').
+          expect(200, assert.singleItemResponse(done));
+      });
+
       callback();
     });
   });
