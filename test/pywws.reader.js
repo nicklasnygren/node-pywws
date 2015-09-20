@@ -1,28 +1,27 @@
-var should  = require('should');
-var app     = require('..').app;
-var pywws   = require('../lib/pywws.reader')(app);
+import reader from '../lib/pywws.reader';
+import should from 'should';
 
 describe('pywws', function () {
   it('should be callable', function () {
-    pywws.should.be.a.Function;
+    reader.should.be.a.Function;
   });
 
   describe('throws error', function () {
     it('if called without descriptor', function () {
       (function () {
-        pywws();
+        reader();
       }).should.throw();
     });
     it('if called without name', function () {
       (function () {
-        pywws({
+        reader({
           // no name here
         });
       }).should.throw();
     });
     it('if called without filename getter', function () {
       (function () {
-        pywws({
+        reader({
           name: 'raw',
           // no filename getter here
         });

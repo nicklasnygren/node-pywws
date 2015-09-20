@@ -1,4 +1,5 @@
-var range = require('../lib/range');
+import { dateRange } from '../lib/range';
+import should from 'should';
 
 describe('range.date', function () {
   var d1, d2;
@@ -10,7 +11,7 @@ describe('range.date', function () {
 
   it('returns array of strings', function () {
     d2.setDate(d2.getDate() + 1);
-    var res = range.date(d1, d2);
+    var res = dateRange(d1, d2);
     res.should.be.an.Array;
     res.length.should.be.exactly(2);
     res.forEach(function (date) {
@@ -20,7 +21,7 @@ describe('range.date', function () {
 
   it('returns dates between and including start and end dates', function () {
     d2.setDate(d2.getDate() + 4);
-    var res = range.date(d1, d2);
+    var res = dateRange(d1, d2);
     var min = d1.setDate(d1.getDate()-1)*1;
     var max = d2.setDate(d2.getDate()+1)*1;
 
@@ -34,10 +35,10 @@ describe('range.date', function () {
 
   it('requires both start and end arguments to be dates', function () {
     (function () {
-      range.date(d1);
+      dateRange(d1);
     }).should.throw();
     (function () {
-      range.date(null, d2);
+      dateRange(null, d2);
     }).should.throw();
   });
 });

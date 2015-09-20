@@ -1,4 +1,5 @@
-var iniparser = require('..').pywws.iniparser;
+import * as iniparser from '../lib/pywws.iniparser';
+import should from 'should';
 
 describe('pywws.iniparser', function () {
   it('gets status', function (done) {

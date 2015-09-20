@@ -1,11 +1,10 @@
-var async     = require('async');
-var should    = require('should');
-var app       = require('..').app;
-var pywws     = require('..').pywws;
+import async from 'async';
+import { datasets } from '../lib/pywws';
+import should from 'should';
 
 describe('pywws.getFirst:', function () {
-  async.each(Object.keys(pywws.datasets), function (key, callback) {
-    var dataset = pywws.datasets[key];
+  async.each(Object.keys(datasets), function (key, callback) {
+    var dataset = datasets[key];
 
     it(key + ' gets latest piece of data', function (done) {
       dataset.getLatest().

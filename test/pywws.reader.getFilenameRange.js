@@ -1,6 +1,5 @@
-var should      = require('should');
-var app         = require('..').app;
-var module      = require('../lib/pywws.reader')(app);
+import reader from '../lib/pywws.reader';
+import should from 'should';
 
 describe('pywws.getFilenameRange', function () {
   var d1, d2, res;
@@ -16,7 +15,7 @@ describe('pywws.getFilenameRange', function () {
   });
 
   it('returns array of date strings ending with ".txt"', function () {
-    var method = module({
+    var method = reader({
       name: 'raw',
       getFilename: function (year, month, day) {
         return Array.prototype.join.call(arguments, '-');
@@ -30,7 +29,7 @@ describe('pywws.getFilenameRange', function () {
   });
 
   it('returns uniques from pywwsDescriptor.getFilename', function () {
-    var method = module({
+    var method = reader({
       name: 'monthly',
       getFilename: function (year, month, day) {
         return [
@@ -45,7 +44,7 @@ describe('pywws.getFilenameRange', function () {
   });
 
   it('returns uniques from pywwsDescriptor.getFilename', function () {
-    var method = module({
+    var method = reader({
       name: 'hourly',
       getFilename: function (year, month, day) {
         return [

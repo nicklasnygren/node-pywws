@@ -1,3 +1,5 @@
+import should from 'should';
+
 var assertMultiItemResponse = function (expectEmpty) {
   var doneCallback = arguments[arguments.length-1];
 

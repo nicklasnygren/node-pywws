@@ -1,6 +1,7 @@
-var should    = require('should');
-var app       = require('..').app;
-var module    = require('../lib/pywws.reader')(app)({
+import reader from '../lib/pywws.reader';
+import should from 'should';
+
+var module = reader({
   name: 'raw',
   getFilename: function (year, month, day) {
     return [
