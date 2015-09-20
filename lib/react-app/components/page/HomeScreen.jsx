@@ -2,10 +2,11 @@ import React from 'react';
 import {Title} from './';
 import {Box, Row} from '../box';
 import {WebcamFeed} from '../webcam';
-import {getWindDirStrFromInt, getDewPoint} from '../../pywws';
+import {getWindDirStrFromInt, getWindChill, getDewPoint} from '../../../utils';
 import {query} from '../../pywws';
 import moment from 'moment';
 import { round } from '../../../utils';
+import zambretti from '../../../zambretti';
 
 export const HomeScreen = React.createClass({
   proptypes: {
@@ -35,6 +36,8 @@ export const HomeScreen = React.createClass({
     let latestReading = moment(data.idx).locale('sv').fromNow();
     let windDirStr = getWindDirStrFromInt(data.wind_dir);
     let dewPoint = getDewPoint(raw.temp_out, raw.hum_out);
+    let windChill = getWindChill(raw.temp_out, raw.wind_ms);
+    let forecast = zambretti(hourly.rel_pressure, windDirStr, daily.rel_pressure_ave);
 
     return (
       <div className="home-screen">
@@ -60,10 +63,10 @@ export const HomeScreen = React.createClass({
             {raw.hum_in}%
           </Box>
           <Box title="Regn (1h)" className="col-xs-6 col-md-2">
-            {hourly.rain} mm
+            {round(hourly.rain)} mm
           </Box>
           <Box title="Regn (24h)" className="col-xs-6 col-md-2">
-            {daily.rain} mm
+            {round(daily.rain)} mm
           </Box>
         </Row>
         <Row>
@@ -77,10 +80,10 @@ export const HomeScreen = React.createClass({
             {round(dewPoint)} &deg;C
           </Box>
           <Box title="Vindkyleffekt" className="col-xs-6 col-md-2">
-            HEJHEJ
+            {round(windChill)} &deg;C
           </Box>
           <Box title="Vädertendens" className="col-xs-12 col-md-4">
-            HEJHEJ
+            {forecast}
           </Box>
         </Row>
         <Row>
