@@ -4,7 +4,8 @@ html(lang=sv)
     title="Torkelsnäs väderstation"
     link(rel="stylesheet" type="text/css" href="http://localhost:8080/assets/bundle.css")
     script(src="http://localhost:8080/webpack-dev-server.js")
-  body!= viewContent
+  body
+    div#app!= viewContent
     script.
       window.initialData = !{initialData};
     script(src="http://localhost:8080/assets/bundle.js")

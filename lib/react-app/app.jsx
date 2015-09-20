@@ -3,7 +3,6 @@ if (__WEBPACK__) {
   ctx.keys().forEach(ctx);
 }
 import 'babel/register';
-
 import React from 'react';
 import AppDispatcher from './dispatcher/AppDispatcher';
 import {HomeScreen, Page} from './components/page';
@@ -27,6 +26,7 @@ export const IndexPage = React.createClass({
 
 if (__WEBPACK__) {
   let { initialData } = window;
-  React.render(<IndexPage initialData={initialData}/>, document.body);
+  let appEl = document.getElementById('app');
+  React.render(<IndexPage initialData={initialData}/>, appEl);
 }
 
