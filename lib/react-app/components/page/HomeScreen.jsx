@@ -1,10 +1,9 @@
 import React from 'react';
-import {Title} from './';
-import {Box, Row} from '../box';
-import {WebcamFeed} from '../webcam';
-import {getWindDirStrFromInt, getWindChill, getDewPoint} from '../../../utils';
-import {query} from '../../pywws';
-import moment from 'moment';
+import { Title } from './';
+import { Box, Row } from '../box';
+import { WebcamFeed } from '../webcam';
+import { getWindDirStrFromInt, getWindChill, getDewPoint, getDate } from '../../../utils';
+import { query } from '../../pywws';
 import { round } from '../../../utils';
 import zambretti from '../../../zambretti';
 
@@ -33,7 +32,7 @@ export const HomeScreen = React.createClass({
   render() {
     let {raw, hourly, daily, monthly} = this.state;
     let data = this.state.raw;
-    let latestReading = moment(data.idx).locale('sv').fromNow();
+    let latestReading = getDate(data.idx).fromNow();
     let windDirStr = getWindDirStrFromInt(data.wind_dir);
     let dewPoint = getDewPoint(raw.temp_out, raw.hum_out);
     let windChill = getWindChill(raw.temp_out, raw.wind_ms);
