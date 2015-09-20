@@ -5,6 +5,7 @@ import {WebcamFeed} from '../webcam';
 import {getWindDirStrFromInt, getDewPoint} from '../../pywws';
 import {query} from '../../pywws';
 import moment from 'moment';
+import { round } from '../../../utils';
 
 export const HomeScreen = React.createClass({
   proptypes: {
@@ -47,10 +48,10 @@ export const HomeScreen = React.createClass({
         </Row>
         <Row>
           <Box title="Temperatur ute" className="col-xs-6 col-md-2">
-            {raw.temp_out} &deg;C
+            {round(raw.temp_out)} &deg;C
           </Box>
           <Box title="Temperatur inne" className="col-xs-6 col-md-2">
-            {raw.temp_in} &deg;C
+            {round(raw.temp_in)} &deg;C
           </Box>
           <Box title="Luftfuktighet ute" className="col-xs-6 col-md-2">
             {raw.hum_out}%
@@ -73,7 +74,7 @@ export const HomeScreen = React.createClass({
             {Math.round(hourly.rel_pressure)} hPa
           </Box>
           <Box title="Daggpunkt" className="col-xs-6 col-md-2">
-            {Math.round(dewPoint*10)/10} &deg;C
+            {round(dewPoint)} &deg;C
           </Box>
           <Box title="Vindkyleffekt" className="col-xs-6 col-md-2">
             HEJHEJ
