@@ -1,0 +1,32 @@
+$box-background: #AAA;
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 3px 3px;
+  padding: 0;
+
+  &-header {
+    font-weight: 400;
+    font-size: .9rem;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(137,113,98,0.09),
+      rgba(137,113,98,0.09) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    border-bottom: 1px solid #CCC;
+    margin: 0;
+    padding: 2px 5px;
+  }
+
+  &-content {
+    font: 500 21px/38px Baskerville, serif;
+    padding: 3px;
+  }
+}
+
+.box-row {
+  margin-bottom: 10px;
+}
