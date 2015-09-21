@@ -3,9 +3,12 @@ import { Title } from './';
 import { Box, Row } from '../box';
 import { WebcamFeed } from '../webcam';
 import { getWindDirStrFromInt, getWindChill, getDewPoint, getDate } from '../../../utils';
-import { query } from '../../pywws';
+import { query } from '../../../pywws.query';
 import { round } from '../../../utils';
 import zambretti from '../../../zambretti';
+import { PywwsRawDataset } from '../../../datasets';
+
+const rawTest = new PywwsRawDataset();
 
 export const HomeScreen = React.createClass({
   proptypes: {

@@ -6,6 +6,10 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 module.exports = {
   devtool: 'inline-source-map',
   resolve: {
+    alias: {
+      // Stub away some node specific modules
+      'fs': path.join(__dirname, 'webpack.stubs.js')
+    },
     extensions: ['', '.js', '.jsx', '.index.js', 'index.jsx']
   },
   entry: {
