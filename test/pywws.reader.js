@@ -1,12 +1,12 @@
 import reader from '../lib/pywws.reader';
 import should from 'should';
 
-describe('pywws', function () {
+describe('pywws.reader', function () {
   it('should be callable', function () {
     reader.should.be.a.Function;
   });
 
-  describe('throws error', function () {
+  xdescribe('throws error', function () {
     it('if called without descriptor', function () {
       (function () {
         reader();
