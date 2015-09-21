@@ -38,8 +38,8 @@ export const HomeScreen = React.createClass({
     let latestReading = getDate(data.idx).fromNow();
     let windDirStr = getWindDirStrFromInt(data.wind_dir);
     let dewPoint = getDewPoint(raw.temp_out, raw.hum_out);
-    let windChill = getWindChill(raw.temp_out, raw.wind_ms);
-    let forecast = zambretti(hourly.rel_pressure, windDirStr, daily.rel_pressure_ave);
+    let windChill = getWindChill(raw.temp_out, raw.wind_ave);
+    let forecast = zambretti(hourly.rel_pressure, windDirStr, hourly.pressure_trend);
 
     return (
       <div className="home-screen">
