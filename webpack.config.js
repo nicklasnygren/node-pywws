@@ -3,8 +3,29 @@ import autoprefixer from 'autoprefixer';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+const __PRODUCTION__ = process.env.NODE_ENV === 'production';
+
+const plugins = [
+  new ExtractTextPlugin('[name].css'),
+  new webpack.DefinePlugin({
+    __WEBPACK__: true,
+    __PRODUCTION__: __PRODUCTION__,
+    __PORT__: process.env.PORT
+  })
+];
+
+let devtool;
+
+if (__PRODUCTION__) {
+  devtool = '';
+  plugins.push(new webpack.optimize.UglifyJsPlugin({}))
+}
+else {
+  devtool = 'inline-source-map';
+}
+
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: devtool,
   resolve: {
     alias: {
       // Stub away some node specific modules
@@ -16,16 +37,11 @@ module.exports = {
     bundle: ['./lib/react-app/app.jsx']
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.join(__dirname, 'build', 'assets'),
     publicPath: '/assets/',
     filename: '[name].js'
   },
-  plugins: [
-    new ExtractTextPlugin('[name].css'),
-    new webpack.DefinePlugin({
-      __WEBPACK__: true
-    })
-  ],
+  plugins: plugins,
   module: {
     loaders: [
       {

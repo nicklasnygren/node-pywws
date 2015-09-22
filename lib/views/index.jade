@@ -1,13 +1,21 @@
+- var prod = process.env.NODE_ENV === 'production'
 doctype
 html(lang=sv)
   head
     title="Torkelsnäs väderstation"
-    link(rel="stylesheet" type="text/css" href="http://localhost:8080/assets/bundle.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    if !prod
+      link(rel="stylesheet" type="text/css" href="http://localhost:8080/assets/bundle.css")
+      script(src="http://localhost:8080/webpack-dev-server.js")
+    if prod
+      link(rel="stylesheet" type="text/css" href="/assets/bundle.css")
     link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400")
-    script(src="http://localhost:8080/webpack-dev-server.js")
   body
     div#app!= viewContent
     script.
       window.initialData = !{initialData};
-    script(src="http://localhost:8080/assets/bundle.js")
+    if !prod
+      script(src="http://localhost:8080/assets/bundle.js")
+    if prod
+      script(src="/assets/bundle.js")
 

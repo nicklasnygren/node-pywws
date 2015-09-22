@@ -97,11 +97,11 @@ export const HomeScreen = React.createClass({
               <Box className="col-xs-6 col-sm-12 col-md-6" title="Vindriktning">
                 {windDirStr}
               </Box>
-              <Box className="col-xs-6 col-sm-12 col-md-3" title="Vindriktning">
-                {windDirStr}
+              <Box className="col-xs-6 col-sm-12 col-md-3" title="Vindstyrka">
+                {round(raw.wind_ave)} m/s
               </Box>
-              <Box className="col-xs-6 col-sm-12 col-md-3" title="Vindriktning">
-                {windDirStr}
+              <Box className="col-xs-6 col-sm-12 col-md-3" title="Vindbyar">
+                {round(raw.wind_gust)} m/s
               </Box>
             </Row>
           </div>
