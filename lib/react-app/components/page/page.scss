@@ -1,3 +1,7 @@
+$sm-viewport: "only screen and (min-width: 48em)";
+$md-viewport: "only screen and (min-width: 62em)";
+$lg-viewport: "only screen and (min-width: 75em)";
+
 $background-color: #FAFAFA;
 $header-background-color: #EEE;
 $max-width: 1140px;
@@ -18,7 +22,7 @@ $max-width: 1140px;
 
   &-header {
     min-height: 55px;
-    padding: 0 35px 0;
+    padding: 0 20px;
     display: flex;
     justify-content: flex-end;
     background-color: $header-background-color;
@@ -41,11 +45,31 @@ $max-width: 1140px;
 
   &-content {
     background-color: white;
-    padding: 55px 35px 0;
+    padding: 30px 20px;
     flex: 1;
   }
 
   &-footer {
+  }
+}
+
+//@media #{$sm-viewport} {
+//  .page-header {
+//    padding: 0 20px;
+//  }
+//
+//  .page-content {
+//    padding: 30px 20px;
+//  }
+//}
+
+@media #{$md-viewport} {
+  .page-header {
+    padding: 0 35px;
+  }
+
+  .page-content {
+    padding: 55px 35px;
   }
 }
 
