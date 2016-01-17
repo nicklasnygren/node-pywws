@@ -29,17 +29,17 @@ module.exports = {
   resolve: {
     alias: {
       // Stub away some node specific modules
-      'fs': path.join(__dirname, 'webpack.stubs.js')
+      'fs': path.join(__dirname, 'webpack.stubs.js'),
     },
-    extensions: ['', '.js', '.jsx', '.index.js', 'index.jsx']
+    extensions: ['', '.js', '.jsx', '.index.js', 'index.jsx'],
   },
   entry: {
     bundle: ['./lib/react-app/app.jsx']
   },
   output: {
-    path: path.join(__dirname, 'build', 'assets'),
-    publicPath: '/assets/',
-    filename: '[name].js'
+    path: path.join(__dirname, 'assets'),
+    filename: '[name].js',
+    publicPath: 'http://localhost:8080/',
   },
   plugins: plugins,
   module: {
@@ -47,19 +47,33 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015'],
+          env: {
+            development: {
+              plugins:  [['react-transform', {
+                transforms: [{
+                  transform: 'react-transform-hmr',
+                  imports: ['react'],
+                  locals: ['module'],
+                }]
+              }]]
+            }
+          }
+        },
       },
       {
         test: [/\.s(a|c)ss?$/, /\.css$/],
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+        loader: 'style!css!postcss!sass',
       },
     ]
   },
   postcss: [
     autoprefixer({
-      browsers: ['last 2 versions']
-    })
-  ]
+      browsers: ['last 2 versions'],
+    }),
+  ],
 };
 

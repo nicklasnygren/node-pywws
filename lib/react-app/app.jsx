@@ -1,8 +1,10 @@
 if (__WEBPACK__) {
+  // Include all css files
   let ctx = require.context('./', true, /\.scss$/);
   ctx.keys().forEach(ctx);
 }
-import 'babel/register';
+
+//import 'babel/register';
 import React from 'react';
 import AppDispatcher from './dispatcher/AppDispatcher';
 import {HomeScreen, Page} from './components/page';

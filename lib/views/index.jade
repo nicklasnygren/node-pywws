@@ -5,8 +5,7 @@ html(lang=sv)
     title="Torkelsnäs väderstation"
     meta(name="viewport" content="width=device-width, initial-scale=1")
     if !prod
-      link(rel="stylesheet" type="text/css" href="http://localhost:8080/assets/bundle.css")
-      script(src="http://localhost:8080/webpack-dev-server.js")
+      link(rel="stylesheet" type="text/css" href="http://localhost:8080/bundle.css")
     if prod
       link(rel="stylesheet" type="text/css" href="/assets/bundle.css")
     link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400")
@@ -15,7 +14,7 @@ html(lang=sv)
     script.
       window.initialData = !{initialData};
     if !prod
-      script(src="http://localhost:8080/assets/bundle.js")
+      script(type="text/javascript" src="http://localhost:8080/bundle.js")
     if prod
       script(src="/assets/bundle.js")
 

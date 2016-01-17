@@ -40,12 +40,13 @@ export const HomeScreen = React.createClass({
     let dewPoint = getDewPoint(raw.temp_out, raw.hum_out);
     let windChill = getWindChill(raw.temp_out, raw.wind_ave);
     let forecast = zambretti(hourly.rel_pressure, windDirStr, hourly.pressure_trend);
+    //asd
 
     return (
       <div className="home-screen">
         <Row>
           <div className="col-sm-8 col-xs-12">
-            <Title>Torkelsnäs väderstation</Title>
+            <Title>Torkelsnäs väderstationer</Title>
           </div>
           <Box className="col-sm-4 col-xs-12" title="Senaste mätning">
             {latestReading}
